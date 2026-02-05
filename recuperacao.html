@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar senha</title>
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="recuperacao.css">
+    
+</head>
+<body>
+    <main>
+        <form action="#" method="post">
+
+            <h1>Recuperar senha</h1>
+
+            <label for="email">Digite seu e-mail</label>
+            <input type="email" name="email" id="email" required autocomplete="email" placeholder="Digite seu e-mail">
+
+            <button type="submit">Enviar</button>
+
+                 <div class="link">
+        <a href="index.html">Voltar para login</a>
+      </div>
+
+        </form>
+    </main>
+
+
+     <footer>
+                <p>&copy;Rafael Atrat</p>
+        </footer>
+</body>
+
+<script>
+  const form = document.querySelector("form");
+  const emailInput = document.getElementById("email");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const email = emailInput.value;
+    const emailMascarado = mascararEmail(email); 
+
+    form.innerHTML = `
+  <h1>Recuperar senha</h1>
+
+  <div class="feedback-sucesso">
+    <p class="feedback-icon">📧</p>
+    <p class="feedback-texto">
+      E-mail de recuperação enviado para<br>
+      <strong>${emailMascarado}</strong>
+    </p>
+
+    <a href="index.html" class="link-voltar">Voltar para login</a>
+  </div>
+`;
+
+  });
+
+  function mascararEmail(email) {
+    const partes = email.split("@");
+    const nome = partes[0];
+    const dominio = partes[1];
+
+    const nomeMascarado =
+      nome.substring(0, 2) + "*".repeat(nome.length - 2);
+
+    const dominioPartes = dominio.split(".");
+    const dominioNome = dominioPartes[0];
+    const dominioFinal = dominioPartes[1];
+
+    const dominioMascarado =
+      dominioNome.substring(0, 2) + "*".repeat(dominioNome.length - 2);
+
+    return `${nomeMascarado}@${dominioMascarado}.${dominioFinal}`;
+  }
+</script>
+
+
+</html>

@@ -1,0 +1,33 @@
+/* Agrupamento de input com ícone */
+.input-group {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  pointer-events: none;
+}
+
+.input-group:focus-within .icon {
+  color: rgb(90, 90, 210);
+}
+
+/* Links específicos do login */
+.link {
+  text-align: center;
+  margin-top: 12px;
+}
+
+#Esqueci {
+  font-weight: 500;
+}
+
+#cad {
+  font-size: 13px;
+  opacity: 0.85;
+}
